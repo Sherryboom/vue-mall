@@ -17,6 +17,7 @@
     </scroll>
     <detail-bottom-bar @addCart="addToCart"/>
 
+    <detail-to-cart @toCart="toCart"></detail-to-cart>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 </template>
@@ -31,6 +32,7 @@ import DetailParamsInfo from "./childComps/DetailParamsInfo";
 import DetailComment from "./childComps/DetailComment";
 import DetailEnd from "./childComps/detailEnd";
 import DetailBottomBar from "./childComps/DetailBottomBar";
+import DetailToCart from "./childComps/DetailToCart";
 
 import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
@@ -54,6 +56,7 @@ export default {
     DetailComment,
     DetailEnd,
     DetailBottomBar,
+    DetailToCart,
     GoodsList,
     Scroll,
     BackTop,
@@ -126,6 +129,11 @@ export default {
     titleClick(index) {
       this.$refs.scroll.scrollTo(0, -this.themeTopYs[index])
     },
+    // 点击跳转购物车
+    toCart(){
+      console.log(this.$route)
+      this.$router.replace('/cart')
+    },
     // 内容滑动，联动顶部nav
     contentScoll(position) {
       let y = -position.y
@@ -141,7 +149,6 @@ export default {
     },
     //添加购物车
     addToCart() {
-
       // 获取需要展示的商品信息 图片、标题、描述、数量
       const product = {
         iid: this.iid,
