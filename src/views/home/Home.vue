@@ -121,7 +121,8 @@ export default {
     contentScroll(position) {
       //判断backTop是否显示
       this.backTopShow(position)
-        //判断tabControl是否吸顶
+
+      //判断tabControl是否吸顶
       this.isTabFixed = (-position.y) > this.tabOffsetTop
     },
     loadMore() {
@@ -166,19 +167,32 @@ export default {
   color: #fff;
 }
 
+/*option 1 */
 .tab-control {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
   z-index: 9;
 }
 
 .content {
   height: calc(100% - 44px - 49px);
   overflow: hidden;
-  /*position: absolute;*/
-  /*top: 44px;*/
-  /*bottom: 49px;*/
-  /*left: 0;*/
-  /*right: 0;*/
 }
+
+/*option 2 */
+/*.tab-control {*/
+/*  position: relative;*/
+/*  z-index: 9;*/
+/*}*/
+
+/*.content {*/
+/*  overflow: hidden;*/
+/*  position: absolute;*/
+/*  top: 44px;*/
+/*  bottom: 49px;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*}*/
 
 </style>
