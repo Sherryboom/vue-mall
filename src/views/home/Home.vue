@@ -3,7 +3,7 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <tab-control class="tab-control"
+    <tab-control class="home-tab-control"
                  ref="tabControl1"
                  :titles="titles"
                  @tabClick="tabClick"
@@ -123,7 +123,7 @@ export default {
       this.backTopShow(position)
 
       //判断tabControl是否吸顶
-      this.isTabFixed = (-position.y) > this.tabOffsetTop
+      this.isTabFixed = (-position.y+44) > this.tabOffsetTop
     },
     loadMore() {
       this.getHomeGoods(this.currentType)
@@ -167,32 +167,36 @@ export default {
   color: #fff;
 }
 
-/*option 1 */
-.tab-control {
-  position: absolute;
-  left: 0;
-  right: 0;
+/*
+option 1
+tab-control脱离文档流，父元素为window，计算要加上navbar的高度
+配合this.isTabFixed = (-position.y+44) > this.tabOffsetTop
+比较麻烦，不推荐了
+*/
+/*.home-tab-control {*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  z-index: 9;*/
+/*}*/
+/*.content {*/
+/*  height: calc(100% - 44px - 49px);*/
+/*  overflow: hidden;*/
+/*}*/
+
+/*option 2*/
+.home-tab-control {
+  position: relative;
   z-index: 9;
 }
 
 .content {
-  height: calc(100% - 44px - 49px);
   overflow: hidden;
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  left: 0;
+  right: 0;
 }
-
-/*option 2 */
-/*.tab-control {*/
-/*  position: relative;*/
-/*  z-index: 9;*/
-/*}*/
-
-/*.content {*/
-/*  overflow: hidden;*/
-/*  position: absolute;*/
-/*  top: 44px;*/
-/*  bottom: 49px;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*}*/
 
 </style>
