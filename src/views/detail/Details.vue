@@ -131,7 +131,6 @@ export default {
     },
     // 点击跳转购物车
     toCart(){
-      console.log(this.$route)
       this.$router.replace('/cart')
     },
     // 内容滑动，联动顶部nav
@@ -201,7 +200,6 @@ export default {
   bottom: 49px;
   left: 0;
   right: 0;
-  /*z-index: 9;*/
   background-color: #fff;
 }
 
