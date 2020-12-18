@@ -1,5 +1,6 @@
 <template>
-  <div class="cate-items">
+  <!--  清除浮动，否则没有高度，滚动无法实现-->
+  <div class="cate-items clear-fix">
     <a v-for="(item, index) in detail"
        :href="item.link"
        class="s-item"
@@ -20,13 +21,18 @@
           return []
         }
       }
-    }
+    },
+    data(){
+      return {
+        count:0,
+        detailLength: 0
+      }
+    },
   }
 </script>
 
 <style scoped>
   .cate-items {
-    background-color: #fff;
     padding: 10px
   }
 
